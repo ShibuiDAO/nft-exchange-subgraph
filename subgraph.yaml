@@ -1,0 +1,59 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: ERC721ExchangeUpgradeable
+    network: mainnet
+    source:
+      address: "0xB2867958B465b11aa64b80Fbf61A37D6FC161BC2"
+      abi: ERC721ExchangeUpgradeable
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - BuyOrderAccepted
+        - BuyOrderBooked
+        - BuyOrderCanceled
+        - BuyOrderUpdated
+        - CollectionRoyaltyFeeAmountUpdated
+        - CollectionRoyaltyPayoutAddressUpdated
+        - OwnershipTransferred
+        - Paused
+        - SellOrderBooked
+        - SellOrderCanceled
+        - SellOrderFufilled
+        - SellOrderUpdated
+        - Unpaused
+      abis:
+        - name: ERC721ExchangeUpgradeable
+          file: ./abis/ERC721ExchangeUpgradeable.json
+      eventHandlers:
+        - event: BuyOrderAccepted(address,indexed address,indexed address,indexed uint256,uint256)
+          handler: handleBuyOrderAccepted
+        - event: BuyOrderBooked(indexed address,address,indexed address,indexed uint256,uint256,uint256)
+          handler: handleBuyOrderBooked
+        - event: BuyOrderCanceled(indexed address,indexed address,indexed uint256)
+          handler: handleBuyOrderCanceled
+        - event: BuyOrderUpdated(indexed address,address,indexed address,indexed uint256,uint256,uint256)
+          handler: handleBuyOrderUpdated
+        - event: CollectionRoyaltyFeeAmountUpdated(indexed address,indexed address,uint256,uint256)
+          handler: handleCollectionRoyaltyFeeAmountUpdated
+        - event: CollectionRoyaltyPayoutAddressUpdated(indexed address,indexed address,indexed address,address)
+          handler: handleCollectionRoyaltyPayoutAddressUpdated
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Paused(address)
+          handler: handlePaused
+        - event: SellOrderBooked(indexed address,indexed address,indexed uint256,uint256,uint256)
+          handler: handleSellOrderBooked
+        - event: SellOrderCanceled(indexed address,indexed address,indexed uint256)
+          handler: handleSellOrderCanceled
+        - event: SellOrderFufilled(indexed address,address,indexed address,indexed uint256,uint256)
+          handler: handleSellOrderFufilled
+        - event: SellOrderUpdated(indexed address,indexed address,indexed uint256,uint256,uint256)
+          handler: handleSellOrderUpdated
+        - event: Unpaused(address)
+          handler: handleUnpaused
+      file: ./src/mapping.ts
