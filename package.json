@@ -11,6 +11,8 @@
     "deploy:boba:mainnet": "graph deploy --ipfs https://graph.mainnet.boba.network:5001 --node https://graph.mainnet.boba.network:8020 tapioca/marketplace",
     "deploy:boba:rinkeby": "graph deploy --ipfs https://graph.rinkeby.boba.network:5001 --node https://graph.rinkeby.boba.network:8020 tapioca/marketplace",
     "deploy:local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 tapioca/marketplace",
+    "remove:boba:mainnet": "graph remove --node https://graph.mainnet.boba.network:8020 tapioca/marketplace",
+    "remove:boba:rinkeby": "graph remove --node https://graph.rinkeby.boba.network:8020 tapioca/marketplace",
     "remove:local": "graph remove --node http://localhost:8020/ tapioca/marketplace"
   },
   "dependencies": {
