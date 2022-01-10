@@ -4,14 +4,20 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ tapioca/marketplace",
-    "create-local": "graph create --node http://localhost:8020/ tapioca/marketplace",
-    "remove-local": "graph remove --node http://localhost:8020/ tapioca/marketplace",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 tapioca/marketplace"
+    "prepare:boba:rinkeby": "mustache config/boba-rinkeby.json subgraph.template.yaml > subgraph.yaml",
+    "create:boba:mainnet": "graph create --node https://graph.mainnet.boba.network:8020 tapioca/marketplace",
+    "create:boba:rinkeby": "graph create --node https://graph.rinkeby.boba.network:8020 tapioca/marketplace",
+    "create:local": "graph create --node http://localhost:8020/ tapioca/marketplace",
+    "deploy:boba:mainnet": "graph deploy --ipfs https://graph.mainnet.boba.network:5001 --node https://graph.mainnet.boba.network:8020 tapioca/marketplace",
+    "deploy:boba:rinkeby": "graph deploy --ipfs https://graph.rinkeby.boba.network:5001 --node https://graph.rinkeby.boba.network:8020 tapioca/marketplace",
+    "deploy:local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 tapioca/marketplace",
+    "remove:local": "graph remove --node http://localhost:8020/ tapioca/marketplace"
   },
   "dependencies": {
+    "@amxx/graphprotocol-utils": "^1.1.0-alpha.2",
     "@graphprotocol/graph-cli": "0.25.1",
-    "@graphprotocol/graph-ts": "0.24.1"
+    "@graphprotocol/graph-ts": "0.24.1",
+    "mustache": "^4.2.0"
   },
   "resolutions": {
     "colors": "1.4.0"

@@ -7,13 +7,10 @@ import {
   BuyOrderUpdated,
   CollectionRoyaltyFeeAmountUpdated,
   CollectionRoyaltyPayoutAddressUpdated,
-  OwnershipTransferred,
-  Paused,
   SellOrderBooked,
   SellOrderCanceled,
   SellOrderFufilled,
-  SellOrderUpdated,
-  Unpaused
+  SellOrderUpdated
 } from "../generated/ERC721ExchangeUpgradeable/ERC721ExchangeUpgradeable"
 import { ExampleEntity } from "../generated/schema"
 
@@ -81,10 +78,6 @@ export function handleCollectionRoyaltyPayoutAddressUpdated(
   event: CollectionRoyaltyPayoutAddressUpdated
 ): void {}
 
-export function handleOwnershipTransferred(event: OwnershipTransferred): void {}
-
-export function handlePaused(event: Paused): void {}
-
 export function handleSellOrderBooked(event: SellOrderBooked): void {}
 
 export function handleSellOrderCanceled(event: SellOrderCanceled): void {}
@@ -92,5 +85,3 @@ export function handleSellOrderCanceled(event: SellOrderCanceled): void {}
 export function handleSellOrderFufilled(event: SellOrderFufilled): void {}
 
 export function handleSellOrderUpdated(event: SellOrderUpdated): void {}
-
-export function handleUnpaused(event: Unpaused): void {}
