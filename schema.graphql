@@ -1,6 +1,23 @@
-type ExampleEntity @entity {
+type Account @entity {
+  "Ethereum Address"
   id: ID!
-  count: BigInt!
-  buyer: Bytes! # address
-  seller: Bytes! # address
+
+  sellOrders: [SellOrder!]! @derivedFrom(field: "seller")
+}
+
+interface Order {
+  id: ID!
+  contract: Bytes!
+  id: BigInt!
+  expiration: BigInt!
+  price: BigInt!
+}
+
+type SellOrder implements Order @entity {
+  id: ID!
+  seller: Account!
+  contract: Account!
+  token: BigInt!
+  expiration: BigInt!
+  price: BigInt!
 }

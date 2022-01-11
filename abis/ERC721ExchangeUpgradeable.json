@@ -402,7 +402,11 @@
         "name": "__systemFeePerMille",
         "type": "uint256"
       },
-      { "internalType": "address", "name": "__wethAddress", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "__wethAddress",
+        "type": "address"
+      }
     ],
     "name": "__ERC721Exchange_init",
     "outputs": [],
@@ -421,9 +425,21 @@
         "name": "tokenContractAddress",
         "type": "address"
       },
-      { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
-      { "internalType": "uint256", "name": "expiration", "type": "uint256" },
-      { "internalType": "uint256", "name": "offer", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "expiration",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "offer",
+        "type": "uint256"
+      }
     ],
     "name": "acceptBuyOrder",
     "outputs": [],
@@ -432,16 +448,30 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "buyer", "type": "address" },
+      {
+        "internalType": "address",
+        "name": "buyer",
+        "type": "address"
+      },
       {
         "internalType": "address",
         "name": "tokenContractAddress",
         "type": "address"
       },
-      { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
     ],
     "name": "buyOrderExists",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
@@ -452,7 +482,11 @@
         "name": "tokenContractAddress",
         "type": "address"
       },
-      { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
     ],
     "name": "cancelBuyOrder",
     "outputs": [],
@@ -466,7 +500,11 @@
         "name": "tokenContractAddress",
         "type": "address"
       },
-      { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
     ],
     "name": "cancelSellOrder",
     "outputs": [],
@@ -475,15 +513,31 @@
   },
   {
     "inputs": [
-      { "internalType": "address payable", "name": "owner", "type": "address" },
+      {
+        "internalType": "address payable",
+        "name": "owner",
+        "type": "address"
+      },
       {
         "internalType": "address",
         "name": "tokenContractAddress",
         "type": "address"
       },
-      { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
-      { "internalType": "uint256", "name": "expiration", "type": "uint256" },
-      { "internalType": "uint256", "name": "offer", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "expiration",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "offer",
+        "type": "uint256"
+      }
     ],
     "name": "createBuyOrder",
     "outputs": [],
@@ -497,9 +551,21 @@
         "name": "tokenContractAddress",
         "type": "address"
       },
-      { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
-      { "internalType": "uint256", "name": "expiration", "type": "uint256" },
-      { "internalType": "uint256", "name": "price", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "expiration",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "price",
+        "type": "uint256"
+      }
     ],
     "name": "createSellOrder",
     "outputs": [],
@@ -518,9 +584,21 @@
         "name": "tokenContractAddress",
         "type": "address"
       },
-      { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
-      { "internalType": "uint256", "name": "expiration", "type": "uint256" },
-      { "internalType": "uint256", "name": "price", "type": "uint256" },
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "expiration",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "price",
+        "type": "uint256"
+      },
       {
         "internalType": "address payable",
         "name": "recipient",
@@ -534,13 +612,21 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "buyer", "type": "address" },
+      {
+        "internalType": "address",
+        "name": "buyer",
+        "type": "address"
+      },
       {
         "internalType": "address",
         "name": "tokenContractAddress",
         "type": "address"
       },
-      { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
     ],
     "name": "getBuyOrder",
     "outputs": [
@@ -548,26 +634,19 @@
         "components": [
           {
             "internalType": "address payable",
-            "name": "buyer",
-            "type": "address"
-          },
-          {
-            "internalType": "address payable",
             "name": "owner",
             "type": "address"
           },
-          {
-            "internalType": "address",
-            "name": "tokenContractAddress",
-            "type": "address"
-          },
-          { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
           {
             "internalType": "uint256",
             "name": "expiration",
             "type": "uint256"
           },
-          { "internalType": "uint256", "name": "offer", "type": "uint256" }
+          {
+            "internalType": "uint256",
+            "name": "offer",
+            "type": "uint256"
+          }
         ],
         "internalType": "struct ERC721ExchangeUpgradeable.BuyOrder",
         "name": "",
@@ -586,7 +665,13 @@
       }
     ],
     "name": "getRoyaltyPayoutAddress",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
@@ -599,41 +684,48 @@
       }
     ],
     "name": "getRoyaltyPayoutRate",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "seller", "type": "address" },
+      {
+        "internalType": "address",
+        "name": "seller",
+        "type": "address"
+      },
       {
         "internalType": "address",
         "name": "tokenContractAddress",
         "type": "address"
       },
-      { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
     ],
     "name": "getSellOrder",
     "outputs": [
       {
         "components": [
           {
-            "internalType": "address payable",
-            "name": "seller",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "tokenContractAddress",
-            "type": "address"
-          },
-          { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
-          {
             "internalType": "uint256",
             "name": "expiration",
             "type": "uint256"
           },
-          { "internalType": "uint256", "name": "price", "type": "uint256" }
+          {
+            "internalType": "uint256",
+            "name": "price",
+            "type": "uint256"
+          }
         ],
         "internalType": "struct ERC721ExchangeUpgradeable.SellOrder",
         "name": "",
@@ -646,7 +738,13 @@
   {
     "inputs": [],
     "name": "owner",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
@@ -660,7 +758,13 @@
   {
     "inputs": [],
     "name": "paused",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
@@ -673,16 +777,30 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "seller", "type": "address" },
+      {
+        "internalType": "address",
+        "name": "seller",
+        "type": "address"
+      },
       {
         "internalType": "address",
         "name": "tokenContractAddress",
         "type": "address"
       },
-      { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
     ],
     "name": "sellOrderExists",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
@@ -737,7 +855,11 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "newOwner", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
     ],
     "name": "transferOwnership",
     "outputs": [],
@@ -753,15 +875,31 @@
   },
   {
     "inputs": [
-      { "internalType": "address payable", "name": "owner", "type": "address" },
+      {
+        "internalType": "address payable",
+        "name": "owner",
+        "type": "address"
+      },
       {
         "internalType": "address",
         "name": "tokenContractAddress",
         "type": "address"
       },
-      { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
-      { "internalType": "uint256", "name": "expiration", "type": "uint256" },
-      { "internalType": "uint256", "name": "offer", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "expiration",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "offer",
+        "type": "uint256"
+      }
     ],
     "name": "updateBuyOrder",
     "outputs": [],
@@ -775,9 +913,21 @@
         "name": "tokenContractAddress",
         "type": "address"
       },
-      { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
-      { "internalType": "uint256", "name": "expiration", "type": "uint256" },
-      { "internalType": "uint256", "name": "price", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "expiration",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "price",
+        "type": "uint256"
+      }
     ],
     "name": "updateSellOrder",
     "outputs": [],
@@ -787,7 +937,13 @@
   {
     "inputs": [],
     "name": "version",
-    "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
     "stateMutability": "pure",
     "type": "function"
   },

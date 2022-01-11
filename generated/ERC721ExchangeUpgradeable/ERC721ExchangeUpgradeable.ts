@@ -393,50 +393,26 @@ export class Unpaused__Params {
 }
 
 export class ERC721ExchangeUpgradeable__getBuyOrderResultValue0Struct extends ethereum.Tuple {
-  get buyer(): Address {
+  get owner(): Address {
     return this[0].toAddress();
   }
 
-  get owner(): Address {
-    return this[1].toAddress();
-  }
-
-  get tokenContractAddress(): Address {
-    return this[2].toAddress();
-  }
-
-  get tokenId(): BigInt {
-    return this[3].toBigInt();
-  }
-
   get expiration(): BigInt {
-    return this[4].toBigInt();
+    return this[1].toBigInt();
   }
 
   get offer(): BigInt {
-    return this[5].toBigInt();
+    return this[2].toBigInt();
   }
 }
 
 export class ERC721ExchangeUpgradeable__getSellOrderResultValue0Struct extends ethereum.Tuple {
-  get seller(): Address {
-    return this[0].toAddress();
-  }
-
-  get tokenContractAddress(): Address {
-    return this[1].toAddress();
-  }
-
-  get tokenId(): BigInt {
-    return this[2].toBigInt();
-  }
-
   get expiration(): BigInt {
-    return this[3].toBigInt();
+    return this[0].toBigInt();
   }
 
   get price(): BigInt {
-    return this[4].toBigInt();
+    return this[1].toBigInt();
   }
 }
 
@@ -491,7 +467,7 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
   ): ERC721ExchangeUpgradeable__getBuyOrderResultValue0Struct {
     let result = super.call(
       "getBuyOrder",
-      "getBuyOrder(address,address,uint256):((address,address,address,uint256,uint256,uint256))",
+      "getBuyOrder(address,address,uint256):((address,uint256,uint256))",
       [
         ethereum.Value.fromAddress(buyer),
         ethereum.Value.fromAddress(tokenContractAddress),
@@ -513,7 +489,7 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
   > {
     let result = super.tryCall(
       "getBuyOrder",
-      "getBuyOrder(address,address,uint256):((address,address,address,uint256,uint256,uint256))",
+      "getBuyOrder(address,address,uint256):((address,uint256,uint256))",
       [
         ethereum.Value.fromAddress(buyer),
         ethereum.Value.fromAddress(tokenContractAddress),
@@ -588,7 +564,7 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
   ): ERC721ExchangeUpgradeable__getSellOrderResultValue0Struct {
     let result = super.call(
       "getSellOrder",
-      "getSellOrder(address,address,uint256):((address,address,uint256,uint256,uint256))",
+      "getSellOrder(address,address,uint256):((uint256,uint256))",
       [
         ethereum.Value.fromAddress(seller),
         ethereum.Value.fromAddress(tokenContractAddress),
@@ -610,7 +586,7 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
   > {
     let result = super.tryCall(
       "getSellOrder",
-      "getSellOrder(address,address,uint256):((address,address,uint256,uint256,uint256))",
+      "getSellOrder(address,address,uint256):((uint256,uint256))",
       [
         ethereum.Value.fromAddress(seller),
         ethereum.Value.fromAddress(tokenContractAddress),

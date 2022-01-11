@@ -11,31 +11,27 @@ import {
   BigDecimal
 } from "@graphprotocol/graph-ts";
 
-export class ExampleEntity extends Entity {
+export class Account extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
-
-    this.set("count", Value.fromBigInt(BigInt.zero()));
-    this.set("buyer", Value.fromBytes(Bytes.empty()));
-    this.set("seller", Value.fromBytes(Bytes.empty()));
   }
 
   save(): void {
     let id = this.get("id");
-    assert(id != null, "Cannot save ExampleEntity entity without an ID");
+    assert(id != null, "Cannot save Account entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        "Cannot save ExampleEntity entity with non-string ID. " +
+        "Cannot save Account entity with non-string ID. " +
           'Considering using .toHex() to convert the "id" to a string.'
       );
-      store.set("ExampleEntity", id.toString(), this);
+      store.set("Account", id.toString(), this);
     }
   }
 
-  static load(id: string): ExampleEntity | null {
-    return changetype<ExampleEntity | null>(store.get("ExampleEntity", id));
+  static load(id: string): Account | null {
+    return changetype<Account | null>(store.get("Account", id));
   }
 
   get id(): string {
@@ -47,30 +43,96 @@ export class ExampleEntity extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get count(): BigInt {
-    let value = this.get("count");
+  get sellOrders(): Array<string> {
+    let value = this.get("sellOrders");
+    return value!.toStringArray();
+  }
+
+  set sellOrders(value: Array<string>) {
+    this.set("sellOrders", Value.fromStringArray(value));
+  }
+}
+
+export class SellOrder extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+
+    this.set("seller", Value.fromString(""));
+    this.set("contract", Value.fromString(""));
+    this.set("token", Value.fromBigInt(BigInt.zero()));
+    this.set("expiration", Value.fromBigInt(BigInt.zero()));
+    this.set("price", Value.fromBigInt(BigInt.zero()));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id != null, "Cannot save SellOrder entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        "Cannot save SellOrder entity with non-string ID. " +
+          'Considering using .toHex() to convert the "id" to a string.'
+      );
+      store.set("SellOrder", id.toString(), this);
+    }
+  }
+
+  static load(id: string): SellOrder | null {
+    return changetype<SellOrder | null>(store.get("SellOrder", id));
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value!.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get seller(): string {
+    let value = this.get("seller");
+    return value!.toString();
+  }
+
+  set seller(value: string) {
+    this.set("seller", Value.fromString(value));
+  }
+
+  get contract(): string {
+    let value = this.get("contract");
+    return value!.toString();
+  }
+
+  set contract(value: string) {
+    this.set("contract", Value.fromString(value));
+  }
+
+  get token(): BigInt {
+    let value = this.get("token");
     return value!.toBigInt();
   }
 
-  set count(value: BigInt) {
-    this.set("count", Value.fromBigInt(value));
+  set token(value: BigInt) {
+    this.set("token", Value.fromBigInt(value));
   }
 
-  get buyer(): Bytes {
-    let value = this.get("buyer");
-    return value!.toBytes();
+  get expiration(): BigInt {
+    let value = this.get("expiration");
+    return value!.toBigInt();
   }
 
-  set buyer(value: Bytes) {
-    this.set("buyer", Value.fromBytes(value));
+  set expiration(value: BigInt) {
+    this.set("expiration", Value.fromBigInt(value));
   }
 
-  get seller(): Bytes {
-    let value = this.get("seller");
-    return value!.toBytes();
+  get price(): BigInt {
+    let value = this.get("price");
+    return value!.toBigInt();
   }
 
-  set seller(value: Bytes) {
-    this.set("seller", Value.fromBytes(value));
+  set price(value: BigInt) {
+    this.set("price", Value.fromBigInt(value));
   }
 }
