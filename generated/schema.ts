@@ -15,6 +15,10 @@ export class Account extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
+
+    this.set("buyVolume", Value.fromBigInt(BigInt.zero()));
+    this.set("sellVolume", Value.fromBigInt(BigInt.zero()));
+    this.set("volume", Value.fromBigInt(BigInt.zero()));
   }
 
   save(): void {
@@ -41,6 +45,51 @@ export class Account extends Entity {
 
   set id(value: string) {
     this.set("id", Value.fromString(value));
+  }
+
+  get buyVolume(): BigInt {
+    let value = this.get("buyVolume");
+    return value!.toBigInt();
+  }
+
+  set buyVolume(value: BigInt) {
+    this.set("buyVolume", Value.fromBigInt(value));
+  }
+
+  get sellVolume(): BigInt {
+    let value = this.get("sellVolume");
+    return value!.toBigInt();
+  }
+
+  set sellVolume(value: BigInt) {
+    this.set("sellVolume", Value.fromBigInt(value));
+  }
+
+  get volume(): BigInt {
+    let value = this.get("volume");
+    return value!.toBigInt();
+  }
+
+  set volume(value: BigInt) {
+    this.set("volume", Value.fromBigInt(value));
+  }
+
+  get receivedBuyOrders(): Array<string> {
+    let value = this.get("receivedBuyOrders");
+    return value!.toStringArray();
+  }
+
+  set receivedBuyOrders(value: Array<string>) {
+    this.set("receivedBuyOrders", Value.fromStringArray(value));
+  }
+
+  get placedBuyOrders(): Array<string> {
+    let value = this.get("placedBuyOrders");
+    return value!.toStringArray();
+  }
+
+  set placedBuyOrders(value: Array<string>) {
+    this.set("placedBuyOrders", Value.fromStringArray(value));
   }
 
   get sellOrders(): Array<string> {
@@ -134,5 +183,99 @@ export class SellOrder extends Entity {
 
   set price(value: BigInt) {
     this.set("price", Value.fromBigInt(value));
+  }
+}
+
+export class BuyOrder extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+
+    this.set("buyer", Value.fromString(""));
+    this.set("owner", Value.fromString(""));
+    this.set("contract", Value.fromString(""));
+    this.set("token", Value.fromBigInt(BigInt.zero()));
+    this.set("expiration", Value.fromBigInt(BigInt.zero()));
+    this.set("offer", Value.fromBigInt(BigInt.zero()));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id != null, "Cannot save BuyOrder entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        "Cannot save BuyOrder entity with non-string ID. " +
+          'Considering using .toHex() to convert the "id" to a string.'
+      );
+      store.set("BuyOrder", id.toString(), this);
+    }
+  }
+
+  static load(id: string): BuyOrder | null {
+    return changetype<BuyOrder | null>(store.get("BuyOrder", id));
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value!.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get buyer(): string {
+    let value = this.get("buyer");
+    return value!.toString();
+  }
+
+  set buyer(value: string) {
+    this.set("buyer", Value.fromString(value));
+  }
+
+  get owner(): string {
+    let value = this.get("owner");
+    return value!.toString();
+  }
+
+  set owner(value: string) {
+    this.set("owner", Value.fromString(value));
+  }
+
+  get contract(): string {
+    let value = this.get("contract");
+    return value!.toString();
+  }
+
+  set contract(value: string) {
+    this.set("contract", Value.fromString(value));
+  }
+
+  get token(): BigInt {
+    let value = this.get("token");
+    return value!.toBigInt();
+  }
+
+  set token(value: BigInt) {
+    this.set("token", Value.fromBigInt(value));
+  }
+
+  get expiration(): BigInt {
+    let value = this.get("expiration");
+    return value!.toBigInt();
+  }
+
+  set expiration(value: BigInt) {
+    this.set("expiration", Value.fromBigInt(value));
+  }
+
+  get offer(): BigInt {
+    let value = this.get("offer");
+    return value!.toBigInt();
+  }
+
+  set offer(value: BigInt) {
+    this.set("offer", Value.fromBigInt(value));
   }
 }

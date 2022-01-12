@@ -2,15 +2,22 @@ type Account @entity {
   "Ethereum Address"
   id: ID!
 
+  buyVolume: BigInt!
+  sellVolume: BigInt!
+
+  volume: BigInt!
+
+  receivedBuyOrders: [BuyOrder!]! @derivedFrom(field: "owner")
+  placedBuyOrders: [BuyOrder!]! @derivedFrom(field: "buyer")
+
   sellOrders: [SellOrder!]! @derivedFrom(field: "seller")
 }
 
 interface Order {
   id: ID!
   contract: Bytes!
-  id: BigInt!
+  token: BigInt!
   expiration: BigInt!
-  price: BigInt!
 }
 
 type SellOrder implements Order @entity {
@@ -20,4 +27,14 @@ type SellOrder implements Order @entity {
   token: BigInt!
   expiration: BigInt!
   price: BigInt!
+}
+
+type BuyOrder implements Order @entity {
+  id: ID!
+  buyer: Account!
+  owner: Account!
+  contract: Account!
+  token: BigInt!
+  expiration: BigInt!
+  offer: BigInt!
 }
