@@ -1,5 +1,5 @@
 {
-    "network": "boba-rinkeby",
-    "erc721Exchange": "0xB2867958B465b11aa64b80Fbf61A37D6FC161BC2",
-    "startBlock": "91780"
+    "network": "boba",
+    "erc721Exchange": "0x7949Af2A30eD10D9D09997549C8731B639f432f1",
+    "startBlock": "98129"
 }

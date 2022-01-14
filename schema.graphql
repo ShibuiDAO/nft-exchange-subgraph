@@ -7,6 +7,9 @@ type Account @entity {
 
   volume: BigInt!
 
+  contractSellOrders: [SellOrder!]! @derivedFrom(field: "contract")
+  contractBuyOrders: [BuyOrder!]! @derivedFrom(field: "contract")
+
   receivedBuyOrders: [BuyOrder!]! @derivedFrom(field: "owner")
   placedBuyOrders: [BuyOrder!]! @derivedFrom(field: "buyer")
 
@@ -15,7 +18,7 @@ type Account @entity {
 
 interface Order {
   id: ID!
-  contract: Bytes!
+  contract: Account!
   token: BigInt!
   expiration: BigInt!
 }

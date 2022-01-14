@@ -2,7 +2,7 @@ specVersion: 0.0.2
 schema:
   file: ./schema.graphql
 dataSources:
-  - kind: ethereum
+  - kind: ethereum/contract
     name: ERC721ExchangeUpgradeable
     network: {{network}}
     source:
@@ -14,16 +14,9 @@ dataSources:
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       entities:
-        - BuyOrderAccepted
-        - BuyOrderBooked
-        - BuyOrderCanceled
-        - BuyOrderUpdated
-        - CollectionRoyaltyFeeAmountUpdated
-        - CollectionRoyaltyPayoutAddressUpdated
-        - SellOrderBooked
-        - SellOrderCanceled
-        - SellOrderFufilled
-        - SellOrderUpdated
+        - Account
+        - SellOrder
+        - BuyOrder
       abis:
         - name: ERC721ExchangeUpgradeable
           file: ./abis/ERC721ExchangeUpgradeable.json

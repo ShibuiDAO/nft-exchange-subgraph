@@ -74,6 +74,24 @@ export class Account extends Entity {
     this.set("volume", Value.fromBigInt(value));
   }
 
+  get contractSellOrders(): Array<string> {
+    let value = this.get("contractSellOrders");
+    return value!.toStringArray();
+  }
+
+  set contractSellOrders(value: Array<string>) {
+    this.set("contractSellOrders", Value.fromStringArray(value));
+  }
+
+  get contractBuyOrders(): Array<string> {
+    let value = this.get("contractBuyOrders");
+    return value!.toStringArray();
+  }
+
+  set contractBuyOrders(value: Array<string>) {
+    this.set("contractBuyOrders", Value.fromStringArray(value));
+  }
+
   get receivedBuyOrders(): Array<string> {
     let value = this.get("receivedBuyOrders");
     return value!.toStringArray();
