@@ -426,17 +426,17 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
   }
 
   buyOrderExists(
-    buyer: Address,
-    tokenContractAddress: Address,
-    tokenId: BigInt
+    _buyer: Address,
+    _tokenContractAddress: Address,
+    _tokenId: BigInt
   ): boolean {
     let result = super.call(
       "buyOrderExists",
       "buyOrderExists(address,address,uint256):(bool)",
       [
-        ethereum.Value.fromAddress(buyer),
-        ethereum.Value.fromAddress(tokenContractAddress),
-        ethereum.Value.fromUnsignedBigInt(tokenId)
+        ethereum.Value.fromAddress(_buyer),
+        ethereum.Value.fromAddress(_tokenContractAddress),
+        ethereum.Value.fromUnsignedBigInt(_tokenId)
       ]
     );
 
@@ -444,17 +444,17 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
   }
 
   try_buyOrderExists(
-    buyer: Address,
-    tokenContractAddress: Address,
-    tokenId: BigInt
+    _buyer: Address,
+    _tokenContractAddress: Address,
+    _tokenId: BigInt
   ): ethereum.CallResult<boolean> {
     let result = super.tryCall(
       "buyOrderExists",
       "buyOrderExists(address,address,uint256):(bool)",
       [
-        ethereum.Value.fromAddress(buyer),
-        ethereum.Value.fromAddress(tokenContractAddress),
-        ethereum.Value.fromUnsignedBigInt(tokenId)
+        ethereum.Value.fromAddress(_buyer),
+        ethereum.Value.fromAddress(_tokenContractAddress),
+        ethereum.Value.fromUnsignedBigInt(_tokenId)
       ]
     );
     if (result.reverted) {
@@ -465,17 +465,17 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
   }
 
   getBuyOrder(
-    buyer: Address,
-    tokenContractAddress: Address,
-    tokenId: BigInt
+    _buyer: Address,
+    _tokenContractAddress: Address,
+    _tokenId: BigInt
   ): ERC721ExchangeUpgradeable__getBuyOrderResultValue0Struct {
     let result = super.call(
       "getBuyOrder",
       "getBuyOrder(address,address,uint256):((address,uint256,uint256))",
       [
-        ethereum.Value.fromAddress(buyer),
-        ethereum.Value.fromAddress(tokenContractAddress),
-        ethereum.Value.fromUnsignedBigInt(tokenId)
+        ethereum.Value.fromAddress(_buyer),
+        ethereum.Value.fromAddress(_tokenContractAddress),
+        ethereum.Value.fromUnsignedBigInt(_tokenId)
       ]
     );
 
@@ -485,9 +485,9 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
   }
 
   try_getBuyOrder(
-    buyer: Address,
-    tokenContractAddress: Address,
-    tokenId: BigInt
+    _buyer: Address,
+    _tokenContractAddress: Address,
+    _tokenId: BigInt
   ): ethereum.CallResult<
     ERC721ExchangeUpgradeable__getBuyOrderResultValue0Struct
   > {
@@ -495,9 +495,9 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
       "getBuyOrder",
       "getBuyOrder(address,address,uint256):((address,uint256,uint256))",
       [
-        ethereum.Value.fromAddress(buyer),
-        ethereum.Value.fromAddress(tokenContractAddress),
-        ethereum.Value.fromUnsignedBigInt(tokenId)
+        ethereum.Value.fromAddress(_buyer),
+        ethereum.Value.fromAddress(_tokenContractAddress),
+        ethereum.Value.fromUnsignedBigInt(_tokenId)
       ]
     );
     if (result.reverted) {
@@ -562,17 +562,17 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
   }
 
   getSellOrder(
-    seller: Address,
-    tokenContractAddress: Address,
-    tokenId: BigInt
+    _seller: Address,
+    _tokenContractAddress: Address,
+    _tokenId: BigInt
   ): ERC721ExchangeUpgradeable__getSellOrderResultValue0Struct {
     let result = super.call(
       "getSellOrder",
       "getSellOrder(address,address,uint256):((uint256,uint256))",
       [
-        ethereum.Value.fromAddress(seller),
-        ethereum.Value.fromAddress(tokenContractAddress),
-        ethereum.Value.fromUnsignedBigInt(tokenId)
+        ethereum.Value.fromAddress(_seller),
+        ethereum.Value.fromAddress(_tokenContractAddress),
+        ethereum.Value.fromUnsignedBigInt(_tokenId)
       ]
     );
 
@@ -582,9 +582,9 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
   }
 
   try_getSellOrder(
-    seller: Address,
-    tokenContractAddress: Address,
-    tokenId: BigInt
+    _seller: Address,
+    _tokenContractAddress: Address,
+    _tokenId: BigInt
   ): ethereum.CallResult<
     ERC721ExchangeUpgradeable__getSellOrderResultValue0Struct
   > {
@@ -592,9 +592,9 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
       "getSellOrder",
       "getSellOrder(address,address,uint256):((uint256,uint256))",
       [
-        ethereum.Value.fromAddress(seller),
-        ethereum.Value.fromAddress(tokenContractAddress),
-        ethereum.Value.fromUnsignedBigInt(tokenId)
+        ethereum.Value.fromAddress(_seller),
+        ethereum.Value.fromAddress(_tokenContractAddress),
+        ethereum.Value.fromUnsignedBigInt(_tokenId)
       ]
     );
     if (result.reverted) {
@@ -639,17 +639,17 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
   }
 
   sellOrderExists(
-    seller: Address,
-    tokenContractAddress: Address,
-    tokenId: BigInt
+    _seller: Address,
+    _tokenContractAddress: Address,
+    _tokenId: BigInt
   ): boolean {
     let result = super.call(
       "sellOrderExists",
       "sellOrderExists(address,address,uint256):(bool)",
       [
-        ethereum.Value.fromAddress(seller),
-        ethereum.Value.fromAddress(tokenContractAddress),
-        ethereum.Value.fromUnsignedBigInt(tokenId)
+        ethereum.Value.fromAddress(_seller),
+        ethereum.Value.fromAddress(_tokenContractAddress),
+        ethereum.Value.fromUnsignedBigInt(_tokenId)
       ]
     );
 
@@ -657,17 +657,17 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
   }
 
   try_sellOrderExists(
-    seller: Address,
-    tokenContractAddress: Address,
-    tokenId: BigInt
+    _seller: Address,
+    _tokenContractAddress: Address,
+    _tokenId: BigInt
   ): ethereum.CallResult<boolean> {
     let result = super.tryCall(
       "sellOrderExists",
       "sellOrderExists(address,address,uint256):(bool)",
       [
-        ethereum.Value.fromAddress(seller),
-        ethereum.Value.fromAddress(tokenContractAddress),
-        ethereum.Value.fromUnsignedBigInt(tokenId)
+        ethereum.Value.fromAddress(_seller),
+        ethereum.Value.fromAddress(_tokenContractAddress),
+        ethereum.Value.fromUnsignedBigInt(_tokenId)
       ]
     );
     if (result.reverted) {
@@ -748,23 +748,23 @@ export class AcceptBuyOrderCall__Inputs {
     this._call = call;
   }
 
-  get bidder(): Address {
+  get _bidder(): Address {
     return this._call.inputValues[0].value.toAddress();
   }
 
-  get tokenContractAddress(): Address {
+  get _tokenContractAddress(): Address {
     return this._call.inputValues[1].value.toAddress();
   }
 
-  get tokenId(): BigInt {
+  get _tokenId(): BigInt {
     return this._call.inputValues[2].value.toBigInt();
   }
 
-  get expiration(): BigInt {
+  get _expiration(): BigInt {
     return this._call.inputValues[3].value.toBigInt();
   }
 
-  get offer(): BigInt {
+  get _offer(): BigInt {
     return this._call.inputValues[4].value.toBigInt();
   }
 }
@@ -794,11 +794,11 @@ export class CancelBuyOrderCall__Inputs {
     this._call = call;
   }
 
-  get tokenContractAddress(): Address {
+  get _tokenContractAddress(): Address {
     return this._call.inputValues[0].value.toAddress();
   }
 
-  get tokenId(): BigInt {
+  get _tokenId(): BigInt {
     return this._call.inputValues[1].value.toBigInt();
   }
 }
@@ -828,11 +828,11 @@ export class CancelSellOrderCall__Inputs {
     this._call = call;
   }
 
-  get tokenContractAddress(): Address {
+  get _tokenContractAddress(): Address {
     return this._call.inputValues[0].value.toAddress();
   }
 
-  get tokenId(): BigInt {
+  get _tokenId(): BigInt {
     return this._call.inputValues[1].value.toBigInt();
   }
 }
@@ -862,23 +862,23 @@ export class CreateBuyOrderCall__Inputs {
     this._call = call;
   }
 
-  get owner(): Address {
+  get _owner(): Address {
     return this._call.inputValues[0].value.toAddress();
   }
 
-  get tokenContractAddress(): Address {
+  get _tokenContractAddress(): Address {
     return this._call.inputValues[1].value.toAddress();
   }
 
-  get tokenId(): BigInt {
+  get _tokenId(): BigInt {
     return this._call.inputValues[2].value.toBigInt();
   }
 
-  get expiration(): BigInt {
+  get _expiration(): BigInt {
     return this._call.inputValues[3].value.toBigInt();
   }
 
-  get offer(): BigInt {
+  get _offer(): BigInt {
     return this._call.inputValues[4].value.toBigInt();
   }
 }
@@ -908,19 +908,19 @@ export class CreateSellOrderCall__Inputs {
     this._call = call;
   }
 
-  get tokenContractAddress(): Address {
+  get _tokenContractAddress(): Address {
     return this._call.inputValues[0].value.toAddress();
   }
 
-  get tokenId(): BigInt {
+  get _tokenId(): BigInt {
     return this._call.inputValues[1].value.toBigInt();
   }
 
-  get expiration(): BigInt {
+  get _expiration(): BigInt {
     return this._call.inputValues[2].value.toBigInt();
   }
 
-  get price(): BigInt {
+  get _price(): BigInt {
     return this._call.inputValues[3].value.toBigInt();
   }
 }
@@ -950,27 +950,27 @@ export class ExecuteSellOrderCall__Inputs {
     this._call = call;
   }
 
-  get seller(): Address {
+  get _seller(): Address {
     return this._call.inputValues[0].value.toAddress();
   }
 
-  get tokenContractAddress(): Address {
+  get _tokenContractAddress(): Address {
     return this._call.inputValues[1].value.toAddress();
   }
 
-  get tokenId(): BigInt {
+  get _tokenId(): BigInt {
     return this._call.inputValues[2].value.toBigInt();
   }
 
-  get expiration(): BigInt {
+  get _expiration(): BigInt {
     return this._call.inputValues[3].value.toBigInt();
   }
 
-  get price(): BigInt {
+  get _price(): BigInt {
     return this._call.inputValues[4].value.toBigInt();
   }
 
-  get recipient(): Address {
+  get _recipient(): Address {
     return this._call.inputValues[5].value.toAddress();
   }
 }
@@ -1206,23 +1206,23 @@ export class UpdateBuyOrderCall__Inputs {
     this._call = call;
   }
 
-  get owner(): Address {
+  get _owner(): Address {
     return this._call.inputValues[0].value.toAddress();
   }
 
-  get tokenContractAddress(): Address {
+  get _tokenContractAddress(): Address {
     return this._call.inputValues[1].value.toAddress();
   }
 
-  get tokenId(): BigInt {
+  get _tokenId(): BigInt {
     return this._call.inputValues[2].value.toBigInt();
   }
 
-  get expiration(): BigInt {
+  get _expiration(): BigInt {
     return this._call.inputValues[3].value.toBigInt();
   }
 
-  get offer(): BigInt {
+  get _offer(): BigInt {
     return this._call.inputValues[4].value.toBigInt();
   }
 }
@@ -1252,19 +1252,19 @@ export class UpdateSellOrderCall__Inputs {
     this._call = call;
   }
 
-  get tokenContractAddress(): Address {
+  get _tokenContractAddress(): Address {
     return this._call.inputValues[0].value.toAddress();
   }
 
-  get tokenId(): BigInt {
+  get _tokenId(): BigInt {
     return this._call.inputValues[1].value.toBigInt();
   }
 
-  get expiration(): BigInt {
+  get _expiration(): BigInt {
     return this._call.inputValues[2].value.toBigInt();
   }
 
-  get price(): BigInt {
+  get _price(): BigInt {
     return this._call.inputValues[3].value.toBigInt();
   }
 }
