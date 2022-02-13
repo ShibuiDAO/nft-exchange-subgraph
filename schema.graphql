@@ -21,6 +21,7 @@ interface Order {
   contract: Account!
   token: BigInt!
   expiration: BigInt!
+  currency: Bytes!
 }
 
 type SellOrder implements Order @entity {
@@ -30,6 +31,7 @@ type SellOrder implements Order @entity {
   token: BigInt!
   expiration: BigInt!
   price: BigInt!
+  currency: Bytes!
 }
 
 type BuyOrder implements Order @entity {
@@ -40,4 +42,5 @@ type BuyOrder implements Order @entity {
   token: BigInt!
   expiration: BigInt!
   offer: BigInt!
+  currency: Bytes!
 }

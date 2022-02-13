@@ -130,6 +130,7 @@ export class SellOrder extends Entity {
     this.set("token", Value.fromBigInt(BigInt.zero()));
     this.set("expiration", Value.fromBigInt(BigInt.zero()));
     this.set("price", Value.fromBigInt(BigInt.zero()));
+    this.set("currency", Value.fromBytes(Bytes.empty()));
   }
 
   save(): void {
@@ -202,6 +203,15 @@ export class SellOrder extends Entity {
   set price(value: BigInt) {
     this.set("price", Value.fromBigInt(value));
   }
+
+  get currency(): Bytes {
+    let value = this.get("currency");
+    return value!.toBytes();
+  }
+
+  set currency(value: Bytes) {
+    this.set("currency", Value.fromBytes(value));
+  }
 }
 
 export class BuyOrder extends Entity {
@@ -215,6 +225,7 @@ export class BuyOrder extends Entity {
     this.set("token", Value.fromBigInt(BigInt.zero()));
     this.set("expiration", Value.fromBigInt(BigInt.zero()));
     this.set("offer", Value.fromBigInt(BigInt.zero()));
+    this.set("currency", Value.fromBytes(Bytes.empty()));
   }
 
   save(): void {
@@ -295,5 +306,14 @@ export class BuyOrder extends Entity {
 
   set offer(value: BigInt) {
     this.set("offer", Value.fromBigInt(value));
+  }
+
+  get currency(): Bytes {
+    let value = this.get("currency");
+    return value!.toBytes();
+  }
+
+  set currency(value: Bytes) {
+    this.set("currency", Value.fromBytes(value));
   }
 }
