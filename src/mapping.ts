@@ -5,8 +5,6 @@ import {
   BuyOrderBooked,
   BuyOrderCanceled,
   BuyOrderUpdated,
-  CollectionRoyaltyFeeAmountUpdated,
-  CollectionRoyaltyPayoutAddressUpdated,
   SellOrderBooked,
   SellOrderCanceled,
   SellOrderFufilled,
@@ -69,14 +67,6 @@ export function handleBuyOrderUpdated(event: BuyOrderUpdated): void {
   buyer.save();
   owner.save();
 }
-
-export function handleCollectionRoyaltyFeeAmountUpdated(
-  event: CollectionRoyaltyFeeAmountUpdated
-): void { }
-
-export function handleCollectionRoyaltyPayoutAddressUpdated(
-  event: CollectionRoyaltyPayoutAddressUpdated
-): void { }
 
 export function handleSellOrderBooked(event: SellOrderBooked): void {
   const account = getOrCreateAccount(event.params.seller);

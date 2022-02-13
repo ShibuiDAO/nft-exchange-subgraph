@@ -4,6 +4,7 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
+    "prepare:boba:mainnet": "mustache config/boba-mainnet.json subgraph.template.yaml > subgraph.yaml",
     "prepare:boba:rinkeby": "mustache config/boba-rinkeby.json subgraph.template.yaml > subgraph.yaml",
     "create:boba:mainnet": "graph create --node https://graph.mainnet.boba.network:8020 shibuidao/nft-exchange",
     "create:boba:rinkeby": "graph create --node https://graph.rinkeby.boba.network:8020 shibuidao/nft-exchange",

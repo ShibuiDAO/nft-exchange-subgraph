@@ -21,24 +21,16 @@ dataSources:
         - name: ERC721ExchangeUpgradeable
           file: ./abis/ERC721ExchangeUpgradeable.json
       eventHandlers:
-        - event: BuyOrderAccepted(address,indexed address,indexed address,indexed uint256,uint256)
-          handler: handleBuyOrderAccepted
-        - event: BuyOrderBooked(indexed address,address,indexed address,indexed uint256,uint256,uint256)
+        - event: BuyOrderBooked(indexed address,address,indexed address,indexed uint256,uint256,uint256,address)
           handler: handleBuyOrderBooked
+        - event: BuyOrderExercised(address,indexed address,indexed address,indexed uint256,uint256,address)
+          handler: handleBuyOrderExercised
         - event: BuyOrderCanceled(indexed address,indexed address,indexed uint256)
           handler: handleBuyOrderCanceled
-        - event: BuyOrderUpdated(indexed address,address,indexed address,indexed uint256,uint256,uint256)
-          handler: handleBuyOrderUpdated
-        - event: CollectionRoyaltyFeeAmountUpdated(indexed address,indexed address,uint256,uint256)
-          handler: handleCollectionRoyaltyFeeAmountUpdated
-        - event: CollectionRoyaltyPayoutAddressUpdated(indexed address,indexed address,indexed address,address)
-          handler: handleCollectionRoyaltyPayoutAddressUpdated
-        - event: SellOrderBooked(indexed address,indexed address,indexed uint256,uint256,uint256)
+        - event: SellOrderBooked(indexed address,indexed address,indexed uint256,uint256,uint256,address)
           handler: handleSellOrderBooked
+        - event: SellOrderExercised(indexed address,address,address,indexed address,indexed uint256,uint256,address)
+          handler: handleSellOrderExercised
         - event: SellOrderCanceled(indexed address,indexed address,indexed uint256)
           handler: handleSellOrderCanceled
-        - event: SellOrderFufilled(indexed address,address,address,indexed address,indexed uint256,uint256)
-          handler: handleSellOrderFufilled
-        - event: SellOrderUpdated(indexed address,indexed address,indexed uint256,uint256,uint256)
-          handler: handleSellOrderUpdated
       file: ./src/mapping.ts

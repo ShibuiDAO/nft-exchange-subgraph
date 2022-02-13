@@ -10,40 +10,6 @@ import {
   BigInt
 } from "@graphprotocol/graph-ts";
 
-export class BuyOrderAccepted extends ethereum.Event {
-  get params(): BuyOrderAccepted__Params {
-    return new BuyOrderAccepted__Params(this);
-  }
-}
-
-export class BuyOrderAccepted__Params {
-  _event: BuyOrderAccepted;
-
-  constructor(event: BuyOrderAccepted) {
-    this._event = event;
-  }
-
-  get buyer(): Address {
-    return this._event.parameters[0].value.toAddress();
-  }
-
-  get seller(): Address {
-    return this._event.parameters[1].value.toAddress();
-  }
-
-  get tokenContractAddress(): Address {
-    return this._event.parameters[2].value.toAddress();
-  }
-
-  get tokenId(): BigInt {
-    return this._event.parameters[3].value.toBigInt();
-  }
-
-  get offer(): BigInt {
-    return this._event.parameters[4].value.toBigInt();
-  }
-}
-
 export class BuyOrderBooked extends ethereum.Event {
   get params(): BuyOrderBooked__Params {
     return new BuyOrderBooked__Params(this);
@@ -80,6 +46,10 @@ export class BuyOrderBooked__Params {
   get offer(): BigInt {
     return this._event.parameters[5].value.toBigInt();
   }
+
+  get token(): Address {
+    return this._event.parameters[6].value.toAddress();
+  }
 }
 
 export class BuyOrderCanceled extends ethereum.Event {
@@ -108,16 +78,16 @@ export class BuyOrderCanceled__Params {
   }
 }
 
-export class BuyOrderUpdated extends ethereum.Event {
-  get params(): BuyOrderUpdated__Params {
-    return new BuyOrderUpdated__Params(this);
+export class BuyOrderExercised extends ethereum.Event {
+  get params(): BuyOrderExercised__Params {
+    return new BuyOrderExercised__Params(this);
   }
 }
 
-export class BuyOrderUpdated__Params {
-  _event: BuyOrderUpdated;
+export class BuyOrderExercised__Params {
+  _event: BuyOrderExercised;
 
-  constructor(event: BuyOrderUpdated) {
+  constructor(event: BuyOrderExercised) {
     this._event = event;
   }
 
@@ -125,7 +95,7 @@ export class BuyOrderUpdated__Params {
     return this._event.parameters[0].value.toAddress();
   }
 
-  get owner(): Address {
+  get seller(): Address {
     return this._event.parameters[1].value.toAddress();
   }
 
@@ -137,72 +107,12 @@ export class BuyOrderUpdated__Params {
     return this._event.parameters[3].value.toBigInt();
   }
 
-  get expiration(): BigInt {
+  get offer(): BigInt {
     return this._event.parameters[4].value.toBigInt();
   }
 
-  get offer(): BigInt {
-    return this._event.parameters[5].value.toBigInt();
-  }
-}
-
-export class CollectionRoyaltyFeeAmountUpdated extends ethereum.Event {
-  get params(): CollectionRoyaltyFeeAmountUpdated__Params {
-    return new CollectionRoyaltyFeeAmountUpdated__Params(this);
-  }
-}
-
-export class CollectionRoyaltyFeeAmountUpdated__Params {
-  _event: CollectionRoyaltyFeeAmountUpdated;
-
-  constructor(event: CollectionRoyaltyFeeAmountUpdated) {
-    this._event = event;
-  }
-
-  get tokenContractAddress(): Address {
-    return this._event.parameters[0].value.toAddress();
-  }
-
-  get executor(): Address {
-    return this._event.parameters[1].value.toAddress();
-  }
-
-  get newRoyaltiesAmount(): BigInt {
-    return this._event.parameters[2].value.toBigInt();
-  }
-
-  get oldRoyaltiesAmount(): BigInt {
-    return this._event.parameters[3].value.toBigInt();
-  }
-}
-
-export class CollectionRoyaltyPayoutAddressUpdated extends ethereum.Event {
-  get params(): CollectionRoyaltyPayoutAddressUpdated__Params {
-    return new CollectionRoyaltyPayoutAddressUpdated__Params(this);
-  }
-}
-
-export class CollectionRoyaltyPayoutAddressUpdated__Params {
-  _event: CollectionRoyaltyPayoutAddressUpdated;
-
-  constructor(event: CollectionRoyaltyPayoutAddressUpdated) {
-    this._event = event;
-  }
-
-  get tokenContractAddress(): Address {
-    return this._event.parameters[0].value.toAddress();
-  }
-
-  get executor(): Address {
-    return this._event.parameters[1].value.toAddress();
-  }
-
-  get newPayoutAddress(): Address {
-    return this._event.parameters[2].value.toAddress();
-  }
-
-  get oldPayoutAddress(): Address {
-    return this._event.parameters[3].value.toAddress();
+  get token(): Address {
+    return this._event.parameters[5].value.toAddress();
   }
 }
 
@@ -278,6 +188,10 @@ export class SellOrderBooked__Params {
   get price(): BigInt {
     return this._event.parameters[4].value.toBigInt();
   }
+
+  get token(): Address {
+    return this._event.parameters[5].value.toAddress();
+  }
 }
 
 export class SellOrderCanceled extends ethereum.Event {
@@ -306,16 +220,16 @@ export class SellOrderCanceled__Params {
   }
 }
 
-export class SellOrderFufilled extends ethereum.Event {
-  get params(): SellOrderFufilled__Params {
-    return new SellOrderFufilled__Params(this);
+export class SellOrderExercised extends ethereum.Event {
+  get params(): SellOrderExercised__Params {
+    return new SellOrderExercised__Params(this);
   }
 }
 
-export class SellOrderFufilled__Params {
-  _event: SellOrderFufilled;
+export class SellOrderExercised__Params {
+  _event: SellOrderExercised;
 
-  constructor(event: SellOrderFufilled) {
+  constructor(event: SellOrderExercised) {
     this._event = event;
   }
 
@@ -342,39 +256,9 @@ export class SellOrderFufilled__Params {
   get price(): BigInt {
     return this._event.parameters[5].value.toBigInt();
   }
-}
 
-export class SellOrderUpdated extends ethereum.Event {
-  get params(): SellOrderUpdated__Params {
-    return new SellOrderUpdated__Params(this);
-  }
-}
-
-export class SellOrderUpdated__Params {
-  _event: SellOrderUpdated;
-
-  constructor(event: SellOrderUpdated) {
-    this._event = event;
-  }
-
-  get seller(): Address {
-    return this._event.parameters[0].value.toAddress();
-  }
-
-  get tokenContractAddress(): Address {
-    return this._event.parameters[1].value.toAddress();
-  }
-
-  get tokenId(): BigInt {
-    return this._event.parameters[2].value.toBigInt();
-  }
-
-  get expiration(): BigInt {
-    return this._event.parameters[3].value.toBigInt();
-  }
-
-  get price(): BigInt {
-    return this._event.parameters[4].value.toBigInt();
+  get token(): Address {
+    return this._event.parameters[6].value.toAddress();
   }
 }
 
@@ -401,12 +285,16 @@ export class ERC721ExchangeUpgradeable__getBuyOrderResultValue0Struct extends et
     return this[0].toAddress();
   }
 
+  get token(): Address {
+    return this[1].toAddress();
+  }
+
   get expiration(): BigInt {
-    return this[1].toBigInt();
+    return this[2].toBigInt();
   }
 
   get offer(): BigInt {
-    return this[2].toBigInt();
+    return this[3].toBigInt();
   }
 }
 
@@ -418,11 +306,30 @@ export class ERC721ExchangeUpgradeable__getSellOrderResultValue0Struct extends e
   get price(): BigInt {
     return this[1].toBigInt();
   }
+
+  get token(): Address {
+    return this[2].toAddress();
+  }
 }
 
 export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
   static bind(address: Address): ERC721ExchangeUpgradeable {
     return new ERC721ExchangeUpgradeable("ERC721ExchangeUpgradeable", address);
+  }
+
+  _sunset(): boolean {
+    let result = super.call("_sunset", "_sunset():(bool)", []);
+
+    return result[0].toBoolean();
+  }
+
+  try__sunset(): ethereum.CallResult<boolean> {
+    let result = super.tryCall("_sunset", "_sunset():(bool)", []);
+    if (result.reverted) {
+      return new ethereum.CallResult();
+    }
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toBoolean());
   }
 
   buyOrderExists(
@@ -471,7 +378,7 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
   ): ERC721ExchangeUpgradeable__getBuyOrderResultValue0Struct {
     let result = super.call(
       "getBuyOrder",
-      "getBuyOrder(address,address,uint256):((address,uint256,uint256))",
+      "getBuyOrder(address,address,uint256):((address,address,uint256,uint256))",
       [
         ethereum.Value.fromAddress(_buyer),
         ethereum.Value.fromAddress(_tokenContractAddress),
@@ -493,7 +400,7 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
   > {
     let result = super.tryCall(
       "getBuyOrder",
-      "getBuyOrder(address,address,uint256):((address,uint256,uint256))",
+      "getBuyOrder(address,address,uint256):((address,address,uint256,uint256))",
       [
         ethereum.Value.fromAddress(_buyer),
         ethereum.Value.fromAddress(_tokenContractAddress),
@@ -511,56 +418,6 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
     );
   }
 
-  getRoyaltyPayoutAddress(_tokenContractAddress: Address): Address {
-    let result = super.call(
-      "getRoyaltyPayoutAddress",
-      "getRoyaltyPayoutAddress(address):(address)",
-      [ethereum.Value.fromAddress(_tokenContractAddress)]
-    );
-
-    return result[0].toAddress();
-  }
-
-  try_getRoyaltyPayoutAddress(
-    _tokenContractAddress: Address
-  ): ethereum.CallResult<Address> {
-    let result = super.tryCall(
-      "getRoyaltyPayoutAddress",
-      "getRoyaltyPayoutAddress(address):(address)",
-      [ethereum.Value.fromAddress(_tokenContractAddress)]
-    );
-    if (result.reverted) {
-      return new ethereum.CallResult();
-    }
-    let value = result.value;
-    return ethereum.CallResult.fromValue(value[0].toAddress());
-  }
-
-  getRoyaltyPayoutRate(_tokenContractAddress: Address): BigInt {
-    let result = super.call(
-      "getRoyaltyPayoutRate",
-      "getRoyaltyPayoutRate(address):(uint256)",
-      [ethereum.Value.fromAddress(_tokenContractAddress)]
-    );
-
-    return result[0].toBigInt();
-  }
-
-  try_getRoyaltyPayoutRate(
-    _tokenContractAddress: Address
-  ): ethereum.CallResult<BigInt> {
-    let result = super.tryCall(
-      "getRoyaltyPayoutRate",
-      "getRoyaltyPayoutRate(address):(uint256)",
-      [ethereum.Value.fromAddress(_tokenContractAddress)]
-    );
-    if (result.reverted) {
-      return new ethereum.CallResult();
-    }
-    let value = result.value;
-    return ethereum.CallResult.fromValue(value[0].toBigInt());
-  }
-
   getSellOrder(
     _seller: Address,
     _tokenContractAddress: Address,
@@ -568,7 +425,7 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
   ): ERC721ExchangeUpgradeable__getSellOrderResultValue0Struct {
     let result = super.call(
       "getSellOrder",
-      "getSellOrder(address,address,uint256):((uint256,uint256))",
+      "getSellOrder(address,address,uint256):((uint256,uint256,address))",
       [
         ethereum.Value.fromAddress(_seller),
         ethereum.Value.fromAddress(_tokenContractAddress),
@@ -590,7 +447,7 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
   > {
     let result = super.tryCall(
       "getSellOrder",
-      "getSellOrder(address,address,uint256):((uint256,uint256))",
+      "getSellOrder(address,address,uint256):((uint256,uint256,address))",
       [
         ethereum.Value.fromAddress(_seller),
         ethereum.Value.fromAddress(_tokenContractAddress),
@@ -606,6 +463,21 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
         value[0].toTuple()
       )
     );
+  }
+
+  orderBook(): Address {
+    let result = super.call("orderBook", "orderBook():(address)", []);
+
+    return result[0].toAddress();
+  }
+
+  try_orderBook(): ethereum.CallResult<Address> {
+    let result = super.tryCall("orderBook", "orderBook():(address)", []);
+    if (result.reverted) {
+      return new ethereum.CallResult();
+    }
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toAddress());
   }
 
   owner(): Address {
@@ -636,6 +508,25 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
     }
     let value = result.value;
     return ethereum.CallResult.fromValue(value[0].toBoolean());
+  }
+
+  royaltyEngine(): Address {
+    let result = super.call("royaltyEngine", "royaltyEngine():(address)", []);
+
+    return result[0].toAddress();
+  }
+
+  try_royaltyEngine(): ethereum.CallResult<Address> {
+    let result = super.tryCall(
+      "royaltyEngine",
+      "royaltyEngine():(address)",
+      []
+    );
+    if (result.reverted) {
+      return new ethereum.CallResult();
+    }
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toAddress());
   }
 
   sellOrderExists(
@@ -677,19 +568,98 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(value[0].toBoolean());
   }
 
-  version(): string {
-    let result = super.call("version", "version():(string)", []);
+  sunset(): boolean {
+    let result = super.call("sunset", "sunset():(bool)", []);
 
-    return result[0].toString();
+    return result[0].toBoolean();
   }
 
-  try_version(): ethereum.CallResult<string> {
-    let result = super.tryCall("version", "version():(string)", []);
+  try_sunset(): ethereum.CallResult<boolean> {
+    let result = super.tryCall("sunset", "sunset():(bool)", []);
     if (result.reverted) {
       return new ethereum.CallResult();
     }
     let value = result.value;
-    return ethereum.CallResult.fromValue(value[0].toString());
+    return ethereum.CallResult.fromValue(value[0].toBoolean());
+  }
+
+  supportsInterface(interfaceId: Bytes): boolean {
+    let result = super.call(
+      "supportsInterface",
+      "supportsInterface(bytes4):(bool)",
+      [ethereum.Value.fromFixedBytes(interfaceId)]
+    );
+
+    return result[0].toBoolean();
+  }
+
+  try_supportsInterface(interfaceId: Bytes): ethereum.CallResult<boolean> {
+    let result = super.tryCall(
+      "supportsInterface",
+      "supportsInterface(bytes4):(bool)",
+      [ethereum.Value.fromFixedBytes(interfaceId)]
+    );
+    if (result.reverted) {
+      return new ethereum.CallResult();
+    }
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toBoolean());
+  }
+
+  version(): BigInt {
+    let result = super.call("version", "version():(uint256)", []);
+
+    return result[0].toBigInt();
+  }
+
+  try_version(): ethereum.CallResult<BigInt> {
+    let result = super.tryCall("version", "version():(uint256)", []);
+    if (result.reverted) {
+      return new ethereum.CallResult();
+    }
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toBigInt());
+  }
+
+  wETH(): Address {
+    let result = super.call("wETH", "wETH():(address)", []);
+
+    return result[0].toAddress();
+  }
+
+  try_wETH(): ethereum.CallResult<Address> {
+    let result = super.tryCall("wETH", "wETH():(address)", []);
+    if (result.reverted) {
+      return new ethereum.CallResult();
+    }
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toAddress());
+  }
+}
+
+export class ConstructorCall extends ethereum.Call {
+  get inputs(): ConstructorCall__Inputs {
+    return new ConstructorCall__Inputs(this);
+  }
+
+  get outputs(): ConstructorCall__Outputs {
+    return new ConstructorCall__Outputs(this);
+  }
+}
+
+export class ConstructorCall__Inputs {
+  _call: ConstructorCall;
+
+  constructor(call: ConstructorCall) {
+    this._call = call;
+  }
+}
+
+export class ConstructorCall__Outputs {
+  _call: ConstructorCall;
+
+  constructor(call: ConstructorCall) {
+    this._call = call;
   }
 }
 
@@ -710,16 +680,20 @@ export class __ERC721Exchange_initCall__Inputs {
     this._call = call;
   }
 
-  get __maxRoyaltyPerMille(): BigInt {
+  get _systemFeePerMille(): BigInt {
     return this._call.inputValues[0].value.toBigInt();
   }
 
-  get __systemFeePerMille(): BigInt {
-    return this._call.inputValues[1].value.toBigInt();
+  get _royaltyEngine(): Address {
+    return this._call.inputValues[1].value.toAddress();
   }
 
-  get __wethAddress(): Address {
+  get _orderBook(): Address {
     return this._call.inputValues[2].value.toAddress();
+  }
+
+  get _wethAddress(): Address {
+    return this._call.inputValues[3].value.toAddress();
   }
 }
 
@@ -731,24 +705,24 @@ export class __ERC721Exchange_initCall__Outputs {
   }
 }
 
-export class AcceptBuyOrderCall extends ethereum.Call {
-  get inputs(): AcceptBuyOrderCall__Inputs {
-    return new AcceptBuyOrderCall__Inputs(this);
+export class BookBuyOrderCall extends ethereum.Call {
+  get inputs(): BookBuyOrderCall__Inputs {
+    return new BookBuyOrderCall__Inputs(this);
   }
 
-  get outputs(): AcceptBuyOrderCall__Outputs {
-    return new AcceptBuyOrderCall__Outputs(this);
+  get outputs(): BookBuyOrderCall__Outputs {
+    return new BookBuyOrderCall__Outputs(this);
   }
 }
 
-export class AcceptBuyOrderCall__Inputs {
-  _call: AcceptBuyOrderCall;
+export class BookBuyOrderCall__Inputs {
+  _call: BookBuyOrderCall;
 
-  constructor(call: AcceptBuyOrderCall) {
+  constructor(call: BookBuyOrderCall) {
     this._call = call;
   }
 
-  get _bidder(): Address {
+  get _owner(): Address {
     return this._call.inputValues[0].value.toAddress();
   }
 
@@ -767,12 +741,62 @@ export class AcceptBuyOrderCall__Inputs {
   get _offer(): BigInt {
     return this._call.inputValues[4].value.toBigInt();
   }
+
+  get _token(): Address {
+    return this._call.inputValues[5].value.toAddress();
+  }
 }
 
-export class AcceptBuyOrderCall__Outputs {
-  _call: AcceptBuyOrderCall;
+export class BookBuyOrderCall__Outputs {
+  _call: BookBuyOrderCall;
 
-  constructor(call: AcceptBuyOrderCall) {
+  constructor(call: BookBuyOrderCall) {
+    this._call = call;
+  }
+}
+
+export class BookSellOrderCall extends ethereum.Call {
+  get inputs(): BookSellOrderCall__Inputs {
+    return new BookSellOrderCall__Inputs(this);
+  }
+
+  get outputs(): BookSellOrderCall__Outputs {
+    return new BookSellOrderCall__Outputs(this);
+  }
+}
+
+export class BookSellOrderCall__Inputs {
+  _call: BookSellOrderCall;
+
+  constructor(call: BookSellOrderCall) {
+    this._call = call;
+  }
+
+  get _tokenContractAddress(): Address {
+    return this._call.inputValues[0].value.toAddress();
+  }
+
+  get _tokenId(): BigInt {
+    return this._call.inputValues[1].value.toBigInt();
+  }
+
+  get _expiration(): BigInt {
+    return this._call.inputValues[2].value.toBigInt();
+  }
+
+  get _price(): BigInt {
+    return this._call.inputValues[3].value.toBigInt();
+  }
+
+  get _token(): Address {
+    return this._call.inputValues[4].value.toAddress();
+  }
+}
+
+export class BookSellOrderCall__Outputs {
+  _call: BookSellOrderCall;
+
+  constructor(call: BookSellOrderCall) {
     this._call = call;
   }
 }
@@ -845,24 +869,24 @@ export class CancelSellOrderCall__Outputs {
   }
 }
 
-export class CreateBuyOrderCall extends ethereum.Call {
-  get inputs(): CreateBuyOrderCall__Inputs {
-    return new CreateBuyOrderCall__Inputs(this);
+export class ExerciseBuyOrderCall extends ethereum.Call {
+  get inputs(): ExerciseBuyOrderCall__Inputs {
+    return new ExerciseBuyOrderCall__Inputs(this);
   }
 
-  get outputs(): CreateBuyOrderCall__Outputs {
-    return new CreateBuyOrderCall__Outputs(this);
+  get outputs(): ExerciseBuyOrderCall__Outputs {
+    return new ExerciseBuyOrderCall__Outputs(this);
   }
 }
 
-export class CreateBuyOrderCall__Inputs {
-  _call: CreateBuyOrderCall;
+export class ExerciseBuyOrderCall__Inputs {
+  _call: ExerciseBuyOrderCall;
 
-  constructor(call: CreateBuyOrderCall) {
+  constructor(call: ExerciseBuyOrderCall) {
     this._call = call;
   }
 
-  get _owner(): Address {
+  get _bidder(): Address {
     return this._call.inputValues[0].value.toAddress();
   }
 
@@ -881,72 +905,34 @@ export class CreateBuyOrderCall__Inputs {
   get _offer(): BigInt {
     return this._call.inputValues[4].value.toBigInt();
   }
+
+  get _token(): Address {
+    return this._call.inputValues[5].value.toAddress();
+  }
 }
 
-export class CreateBuyOrderCall__Outputs {
-  _call: CreateBuyOrderCall;
+export class ExerciseBuyOrderCall__Outputs {
+  _call: ExerciseBuyOrderCall;
 
-  constructor(call: CreateBuyOrderCall) {
+  constructor(call: ExerciseBuyOrderCall) {
     this._call = call;
   }
 }
 
-export class CreateSellOrderCall extends ethereum.Call {
-  get inputs(): CreateSellOrderCall__Inputs {
-    return new CreateSellOrderCall__Inputs(this);
+export class ExerciseSellOrderCall extends ethereum.Call {
+  get inputs(): ExerciseSellOrderCall__Inputs {
+    return new ExerciseSellOrderCall__Inputs(this);
   }
 
-  get outputs(): CreateSellOrderCall__Outputs {
-    return new CreateSellOrderCall__Outputs(this);
-  }
-}
-
-export class CreateSellOrderCall__Inputs {
-  _call: CreateSellOrderCall;
-
-  constructor(call: CreateSellOrderCall) {
-    this._call = call;
-  }
-
-  get _tokenContractAddress(): Address {
-    return this._call.inputValues[0].value.toAddress();
-  }
-
-  get _tokenId(): BigInt {
-    return this._call.inputValues[1].value.toBigInt();
-  }
-
-  get _expiration(): BigInt {
-    return this._call.inputValues[2].value.toBigInt();
-  }
-
-  get _price(): BigInt {
-    return this._call.inputValues[3].value.toBigInt();
+  get outputs(): ExerciseSellOrderCall__Outputs {
+    return new ExerciseSellOrderCall__Outputs(this);
   }
 }
 
-export class CreateSellOrderCall__Outputs {
-  _call: CreateSellOrderCall;
+export class ExerciseSellOrderCall__Inputs {
+  _call: ExerciseSellOrderCall;
 
-  constructor(call: CreateSellOrderCall) {
-    this._call = call;
-  }
-}
-
-export class ExecuteSellOrderCall extends ethereum.Call {
-  get inputs(): ExecuteSellOrderCall__Inputs {
-    return new ExecuteSellOrderCall__Inputs(this);
-  }
-
-  get outputs(): ExecuteSellOrderCall__Outputs {
-    return new ExecuteSellOrderCall__Outputs(this);
-  }
-}
-
-export class ExecuteSellOrderCall__Inputs {
-  _call: ExecuteSellOrderCall;
-
-  constructor(call: ExecuteSellOrderCall) {
+  constructor(call: ExerciseSellOrderCall) {
     this._call = call;
   }
 
@@ -973,12 +959,42 @@ export class ExecuteSellOrderCall__Inputs {
   get _recipient(): Address {
     return this._call.inputValues[5].value.toAddress();
   }
+
+  get _token(): Address {
+    return this._call.inputValues[6].value.toAddress();
+  }
 }
 
-export class ExecuteSellOrderCall__Outputs {
-  _call: ExecuteSellOrderCall;
+export class ExerciseSellOrderCall__Outputs {
+  _call: ExerciseSellOrderCall;
 
-  constructor(call: ExecuteSellOrderCall) {
+  constructor(call: ExerciseSellOrderCall) {
+    this._call = call;
+  }
+}
+
+export class GoTowardsTheSunsetCall extends ethereum.Call {
+  get inputs(): GoTowardsTheSunsetCall__Inputs {
+    return new GoTowardsTheSunsetCall__Inputs(this);
+  }
+
+  get outputs(): GoTowardsTheSunsetCall__Outputs {
+    return new GoTowardsTheSunsetCall__Outputs(this);
+  }
+}
+
+export class GoTowardsTheSunsetCall__Inputs {
+  _call: GoTowardsTheSunsetCall;
+
+  constructor(call: GoTowardsTheSunsetCall) {
+    this._call = call;
+  }
+}
+
+export class GoTowardsTheSunsetCall__Outputs {
+  _call: GoTowardsTheSunsetCall;
+
+  constructor(call: GoTowardsTheSunsetCall) {
     this._call = call;
   }
 }
@@ -1031,44 +1047,6 @@ export class RenounceOwnershipCall__Outputs {
   _call: RenounceOwnershipCall;
 
   constructor(call: RenounceOwnershipCall) {
-    this._call = call;
-  }
-}
-
-export class SetRoyaltyCall extends ethereum.Call {
-  get inputs(): SetRoyaltyCall__Inputs {
-    return new SetRoyaltyCall__Inputs(this);
-  }
-
-  get outputs(): SetRoyaltyCall__Outputs {
-    return new SetRoyaltyCall__Outputs(this);
-  }
-}
-
-export class SetRoyaltyCall__Inputs {
-  _call: SetRoyaltyCall;
-
-  constructor(call: SetRoyaltyCall) {
-    this._call = call;
-  }
-
-  get _tokenContractAddress(): Address {
-    return this._call.inputValues[0].value.toAddress();
-  }
-
-  get _payoutAddress(): Address {
-    return this._call.inputValues[1].value.toAddress();
-  }
-
-  get _payoutPerMille(): BigInt {
-    return this._call.inputValues[2].value.toBigInt();
-  }
-}
-
-export class SetRoyaltyCall__Outputs {
-  _call: SetRoyaltyCall;
-
-  constructor(call: SetRoyaltyCall) {
     this._call = call;
   }
 }
@@ -1225,6 +1203,10 @@ export class UpdateBuyOrderCall__Inputs {
   get _offer(): BigInt {
     return this._call.inputValues[4].value.toBigInt();
   }
+
+  get _token(): Address {
+    return this._call.inputValues[5].value.toAddress();
+  }
 }
 
 export class UpdateBuyOrderCall__Outputs {
@@ -1266,6 +1248,10 @@ export class UpdateSellOrderCall__Inputs {
 
   get _price(): BigInt {
     return this._call.inputValues[3].value.toBigInt();
+  }
+
+  get _token(): Address {
+    return this._call.inputValues[4].value.toAddress();
   }
 }
 
