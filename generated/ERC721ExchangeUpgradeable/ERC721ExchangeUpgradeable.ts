@@ -317,21 +317,6 @@ export class ERC721ExchangeUpgradeable extends ethereum.SmartContract {
     return new ERC721ExchangeUpgradeable("ERC721ExchangeUpgradeable", address);
   }
 
-  _sunset(): boolean {
-    let result = super.call("_sunset", "_sunset():(bool)", []);
-
-    return result[0].toBoolean();
-  }
-
-  try__sunset(): ethereum.CallResult<boolean> {
-    let result = super.tryCall("_sunset", "_sunset():(bool)", []);
-    if (result.reverted) {
-      return new ethereum.CallResult();
-    }
-    let value = result.value;
-    return ethereum.CallResult.fromValue(value[0].toBoolean());
-  }
-
   buyOrderExists(
     _buyer: Address,
     _tokenContractAddress: Address,
@@ -680,20 +665,24 @@ export class __ERC721Exchange_initCall__Inputs {
     this._call = call;
   }
 
+  get _systemFeeWallet(): Address {
+    return this._call.inputValues[0].value.toAddress();
+  }
+
   get _systemFeePerMille(): BigInt {
-    return this._call.inputValues[0].value.toBigInt();
+    return this._call.inputValues[1].value.toBigInt();
   }
 
   get _royaltyEngine(): Address {
-    return this._call.inputValues[1].value.toAddress();
-  }
-
-  get _orderBook(): Address {
     return this._call.inputValues[2].value.toAddress();
   }
 
-  get _wethAddress(): Address {
+  get _orderBook(): Address {
     return this._call.inputValues[3].value.toAddress();
+  }
+
+  get _wethAddress(): Address {
+    return this._call.inputValues[4].value.toAddress();
   }
 }
 
@@ -1051,6 +1040,66 @@ export class RenounceOwnershipCall__Outputs {
   }
 }
 
+export class SetOrderBookCall extends ethereum.Call {
+  get inputs(): SetOrderBookCall__Inputs {
+    return new SetOrderBookCall__Inputs(this);
+  }
+
+  get outputs(): SetOrderBookCall__Outputs {
+    return new SetOrderBookCall__Outputs(this);
+  }
+}
+
+export class SetOrderBookCall__Inputs {
+  _call: SetOrderBookCall;
+
+  constructor(call: SetOrderBookCall) {
+    this._call = call;
+  }
+
+  get _newOrderBook(): Address {
+    return this._call.inputValues[0].value.toAddress();
+  }
+}
+
+export class SetOrderBookCall__Outputs {
+  _call: SetOrderBookCall;
+
+  constructor(call: SetOrderBookCall) {
+    this._call = call;
+  }
+}
+
+export class SetRoyaltyEngineCall extends ethereum.Call {
+  get inputs(): SetRoyaltyEngineCall__Inputs {
+    return new SetRoyaltyEngineCall__Inputs(this);
+  }
+
+  get outputs(): SetRoyaltyEngineCall__Outputs {
+    return new SetRoyaltyEngineCall__Outputs(this);
+  }
+}
+
+export class SetRoyaltyEngineCall__Inputs {
+  _call: SetRoyaltyEngineCall;
+
+  constructor(call: SetRoyaltyEngineCall) {
+    this._call = call;
+  }
+
+  get _newRoyaltyEngine(): Address {
+    return this._call.inputValues[0].value.toAddress();
+  }
+}
+
+export class SetRoyaltyEngineCall__Outputs {
+  _call: SetRoyaltyEngineCall;
+
+  constructor(call: SetRoyaltyEngineCall) {
+    this._call = call;
+  }
+}
+
 export class SetSystemFeePerMilleCall extends ethereum.Call {
   get inputs(): SetSystemFeePerMilleCall__Inputs {
     return new SetSystemFeePerMilleCall__Inputs(this);
@@ -1163,102 +1212,6 @@ export class UnpauseCall__Outputs {
   _call: UnpauseCall;
 
   constructor(call: UnpauseCall) {
-    this._call = call;
-  }
-}
-
-export class UpdateBuyOrderCall extends ethereum.Call {
-  get inputs(): UpdateBuyOrderCall__Inputs {
-    return new UpdateBuyOrderCall__Inputs(this);
-  }
-
-  get outputs(): UpdateBuyOrderCall__Outputs {
-    return new UpdateBuyOrderCall__Outputs(this);
-  }
-}
-
-export class UpdateBuyOrderCall__Inputs {
-  _call: UpdateBuyOrderCall;
-
-  constructor(call: UpdateBuyOrderCall) {
-    this._call = call;
-  }
-
-  get _owner(): Address {
-    return this._call.inputValues[0].value.toAddress();
-  }
-
-  get _tokenContractAddress(): Address {
-    return this._call.inputValues[1].value.toAddress();
-  }
-
-  get _tokenId(): BigInt {
-    return this._call.inputValues[2].value.toBigInt();
-  }
-
-  get _expiration(): BigInt {
-    return this._call.inputValues[3].value.toBigInt();
-  }
-
-  get _offer(): BigInt {
-    return this._call.inputValues[4].value.toBigInt();
-  }
-
-  get _token(): Address {
-    return this._call.inputValues[5].value.toAddress();
-  }
-}
-
-export class UpdateBuyOrderCall__Outputs {
-  _call: UpdateBuyOrderCall;
-
-  constructor(call: UpdateBuyOrderCall) {
-    this._call = call;
-  }
-}
-
-export class UpdateSellOrderCall extends ethereum.Call {
-  get inputs(): UpdateSellOrderCall__Inputs {
-    return new UpdateSellOrderCall__Inputs(this);
-  }
-
-  get outputs(): UpdateSellOrderCall__Outputs {
-    return new UpdateSellOrderCall__Outputs(this);
-  }
-}
-
-export class UpdateSellOrderCall__Inputs {
-  _call: UpdateSellOrderCall;
-
-  constructor(call: UpdateSellOrderCall) {
-    this._call = call;
-  }
-
-  get _tokenContractAddress(): Address {
-    return this._call.inputValues[0].value.toAddress();
-  }
-
-  get _tokenId(): BigInt {
-    return this._call.inputValues[1].value.toBigInt();
-  }
-
-  get _expiration(): BigInt {
-    return this._call.inputValues[2].value.toBigInt();
-  }
-
-  get _price(): BigInt {
-    return this._call.inputValues[3].value.toBigInt();
-  }
-
-  get _token(): Address {
-    return this._call.inputValues[4].value.toAddress();
-  }
-}
-
-export class UpdateSellOrderCall__Outputs {
-  _call: UpdateSellOrderCall;
-
-  constructor(call: UpdateSellOrderCall) {
     this._call = call;
   }
 }
