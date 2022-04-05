@@ -1,5 +1,5 @@
 {
-    "network": "boba",
+    "network": "boba-testnet",
     "erc721Exchange": "0x34755a949e68b18f585eb91711351b697c1563d5",
     "startBlock": "3852"
 }
